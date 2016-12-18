@@ -20,56 +20,6 @@
             $("body").toggleClass("nav-opened nav-closed");
         });
 
-        // Stop main header from resizing when scrolling on tablets:
-        var md = new MobileDetect(window.navigator.userAgent);
-
-        if (md.tablet()) {
-            var headerHeightLandscape;
-            var headerHeightPortrait;
-
-            // If orientation is landscape:
-            if (screen.orientation.angle === 0 || screen.orientation.angle === 180) {
-                headerHeightLandscape = $('.main-header').css('height');
-                $('.main-header').css('height', headerHeightLandscape);
-            }
-            // If orientation is portrait:
-            else {
-                headerHeightPortrait = $('.main-header').css('height');
-                $('.main-header').css('height', headerHeightPortrait);
-            }
-        }
-
-        // Fade-in main header background image:
-        $('.main-header').imagesLoaded( { background: true }, function() {
-            $('.main-header-background-square').css('background-color', 'transparent');
-        });
-
-        // Show main header's title and description when background image is visible:
-        $(".home-template .main-header-background-square")
-            .on("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd", function(e) {
-                $('.home-template .page-title, .home-template .page-description').css('display', 'inherit');
-            });
-
-        // When window is resized make sure title and description are visible:
-        $(window).resize(function () {
-            $('.home-template .page-title, .home-template .page-description').css('display', 'inherit');
-        });
-
-        // Fade-in logo when image is loaded:
-        $('.blog-logo img').imagesLoaded(function() {
-            $('.blog-logo img').css('display', 'inherit');
-        });
-
-        // Remove animation from menu when visible for first time:
-        $('.nav-closed .menu-button').click(function() {
-            $(this).css('animation', 'none');
-        });
-
-        // Show author image when image is loaded:
-        $('.author-image .img').imagesLoaded( { background: true }, function() {
-            $('.author-image').css('visibility', 'visible');
-        });
-
     });
 
     // Arctic Scroll by Paul Adam Davis
@@ -104,4 +54,3 @@
 
     };
 })(jQuery);
-
